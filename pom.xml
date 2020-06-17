@@ -149,5 +149,10 @@
             </plugin>
         </plugins>
     </build>
-
+		<developers>
+			<developer>
+				<name>Jefferson Borges</name>
+				<email>jeffersonborges@email.com</email>
+			</developer>
+	</developers>
 </project>
