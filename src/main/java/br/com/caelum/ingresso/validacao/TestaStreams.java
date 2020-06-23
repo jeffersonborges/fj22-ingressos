@@ -10,9 +10,9 @@ import br.com.caelum.ingresso.model.Filme;
 public class TestaStreams {
 
 	public static void main(String[] args) {
-		Filme f1 = new Filme("Terminador", Duration.ofHours(1), "Ação");
-		Filme f2 = new Filme("Predador", Duration.ofHours(1), "Drama");
-		Filme f3 = new Filme("Duro de Matar", Duration.ofHours(1), "Drama");
+		Filme f1 = new Filme("Terminador", Duration.ofHours(1), "Ação", null);
+		Filme f2 = new Filme("Predador", Duration.ofHours(1), "Drama", null);
+		Filme f3 = new Filme("Duro de Matar", Duration.ofHours(1), "Drama", null);
 
 		List<Filme> filmes = Arrays.asList(f1, f2, f3);
 
