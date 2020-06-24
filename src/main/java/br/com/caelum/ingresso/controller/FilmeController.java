@@ -40,7 +40,6 @@ public class FilmeController {
 
 	@GetMapping({ "/admin/filme", "/admin/filme/{id}" })
 	public ModelAndView form(@PathVariable("id") Optional<Integer> id, Filme filme) {
-
 		ModelAndView modelAndView = new ModelAndView("filme/filme");
 
 		if (id.isPresent()) {
@@ -55,7 +54,6 @@ public class FilmeController {
 	@PostMapping("/admin/filme")
 	@Transactional
 	public ModelAndView salva(@Valid Filme filme, BindingResult result) {
-
 		if (result.hasErrors()) {
 			return form(Optional.ofNullable(filme.getId()), filme);
 		}
@@ -69,7 +67,6 @@ public class FilmeController {
 
 	@GetMapping(value = "/admin/filmes")
 	public ModelAndView lista() {
-
 		ModelAndView modelAndView = new ModelAndView("filme/lista");
 		modelAndView.addObject("filmes", filmeDao.findAll());
 		return modelAndView;
@@ -77,7 +74,6 @@ public class FilmeController {
 
 	@GetMapping("/filme/em-cartaz")
 	public ModelAndView emCartaz() {
-		
 		ModelAndView modelAndView = new ModelAndView("filme/em-cartaz");
 		modelAndView.addObject("filmes", filmeDao.findAll());
 		return modelAndView;
@@ -85,13 +81,12 @@ public class FilmeController {
 
 	@GetMapping("/filme/{id}/detalhe")
 	public ModelAndView detalhes(@PathVariable("id") Integer id) {
-		
 		ModelAndView modelAndView = new ModelAndView("/filme/detalhe");
 		
 		Filme filme = filmeDao.findOne(id);
 		List<Sessao> sessoes = sessaoDao.buscaSessoesDoFilme(filme);
 		
-		Optional<DetalhesDoFilme> detalhesDoFilme = client.request(filme);
+		Optional<DetalhesDoFilme> detalhesDoFilme = client.request(filme, DetalhesDoFilme.class);
 		
 		modelAndView.addObject("sessoes", sessoes);
 		modelAndView.addObject("detalhes", detalhesDoFilme.orElse(new DetalhesDoFilme()));
@@ -103,7 +98,6 @@ public class FilmeController {
 	@ResponseBody
 	@Transactional
 	public void delete(@PathVariable("id") Integer id) {
-		
 		filmeDao.delete(id);
 	}
 }

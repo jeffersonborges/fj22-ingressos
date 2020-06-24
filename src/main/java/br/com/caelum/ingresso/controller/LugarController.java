@@ -21,8 +21,6 @@ import javax.validation.Valid;
  */
 @Controller
 public class LugarController {
-
-
     @Autowired
     private SalaDao salaDao;
     @Autowired
@@ -45,7 +43,6 @@ public class LugarController {
     @PostMapping("/admin/lugar")
     @Transactional
     public ModelAndView salva(@Valid LugarForm lugarDto, BindingResult result) {
-
         if (result.hasErrors()) return form(lugarDto.getSalaId(), lugarDto);
 
         Integer salaId = lugarDto.getSalaId();
