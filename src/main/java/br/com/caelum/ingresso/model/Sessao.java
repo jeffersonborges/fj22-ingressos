@@ -47,7 +47,7 @@ public class Sessao {
 	}
 
 	public boolean isDisponivel(Lugar lugarSelecionado) {
-		return ingressos.stream().map(Ingresso::getLugar).noneMatch(lugar -> equals(lugarSelecionado));
+		return ingressos.stream().map(Ingresso::getLugar).noneMatch(lugar -> lugar.equals(lugarSelecionado));
 	}
 	
 	public Map<String, List<Lugar>> getMapaDeLugares() {
